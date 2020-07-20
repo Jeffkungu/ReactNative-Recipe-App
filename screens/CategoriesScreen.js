@@ -4,7 +4,6 @@ import {
   View,
   StyleSheet,
   FlatList,
-  Button,
   TouchableOpacity,
   Platform
 } from 'react-native'
@@ -20,11 +19,17 @@ const CategoriesScreen = props => {
       <TouchableOpacity
         style={styles.gridItem}
         onPress={() => {
-          props.navigation.navigate({ routeName: 'CategoryMeals' })
+          props.navigation.navigate({
+            routeName: 'CategoryMeals',
+            params: {
+              categoryId: itemData.item.id
+            }
+          })
         }}
       >
-        <View>
+        <View backgroundColor={itemData.item.color}>
           <Text>{itemData.item.title}</Text>
+          <Text>{itemData.item.id}</Text>
         </View>
       </TouchableOpacity>
     )
